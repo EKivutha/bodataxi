@@ -1,33 +1,57 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { CardList } from 'react-native-card-list/src/CardList'
+import { Icon } from "react-native-elements";
+import { FlatList,TouchableOpacity,Image,StyleSheet, Text, View } from 'react-native'
+import tw from 'tailwind-react-native-classnames';
+import al from "../assets/a&l.png"
+import ttot from "../assets/ttot macha.png"
+import gelian from "../assets/gelian.png"
 
 const cards = [
     {
       id: "0",
-      title: "Starry Night",
-      picture: require('../assets/a&l.png'),
-      content: <Text>Starry Night</Text>
+      title: "A & L",
+      picture: Image.resolveAssetSource(gelian).uri,
     },
     {
       id: "1",
-      title: "Wheat Field",
-      picture: require('../assets/ttot macha.png'),
-      content: <Text>Wheat Field with Cypresses</Text>
+      title: "T Tot Hotel",
+      picture: Image.resolveAssetSource(gelian).uri,
     },
     {
       id: "2",
-      title: "Bedroom in Arles",
-      picture: require('../assets/gelian.png'),
-      content: <Text>Bedroom in Arles</Text>
+      title: "Gelian",
+      picture: Image.resolveAssetSource(gelian).uri,
     }
   ]
 
  const EatsScreen = () => {
     return (
-        <View>
-            <CardList cards={cards} />
-        </View>)
+        <FlatList
+        data={cards}
+        keyExtractor={(item) => item.id}
+        vertical
+        renderItem={({ item }) =>
+            <TouchableOpacity style={tw`p-6 m-3 pb-8 rounded-lg pt-4 bg-gray-200 w-100 h-60`}
+              onPress={() => {}}>
+                <View>
+                    <Image
+                        style={{
+                            width: 300,
+                            height: 120,
+                            resizeMode: "contain"
+                        }}
+                        source={{ uri: item.picture }}
+                    />
+                    <Text style={tw`mt-2 text-center text-lg font-semibold`} >{item.title}</Text>
+                    <Icon
+                    style={tw`p-2 bg-black rounded-full w-10 mt-4`}
+                    name="arrowright" color="white" type="antdesign" />
+                </View>
+            </TouchableOpacity>
+        }
+
+    />
+    )
 
 }
 export default EatsScreen
