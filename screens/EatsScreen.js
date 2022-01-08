@@ -10,12 +10,12 @@ const cards = [
     {
       id: "0",
       title: "A & L",
-      picture: Image.resolveAssetSource(gelian).uri,
+      picture: Image.resolveAssetSource(al).uri,
     },
     {
       id: "1",
       title: "T Tot Hotel",
-      picture: Image.resolveAssetSource(gelian).uri,
+      picture: Image.resolveAssetSource(ttot).uri,
     },
     {
       id: "2",
