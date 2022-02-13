@@ -2,8 +2,8 @@ import React from 'react'
 import { Icon } from "react-native-elements";
 import { FlatList,TouchableOpacity,Image,StyleSheet, Text, View } from 'react-native'
 import tw from 'tailwind-react-native-classnames';
-import al from "../assets/a&l.png"
-import ttot from "../assets/ttot macha.png"
+import al from "../assets/al.png"
+import ttot from "../assets/ttotmacha.png"
 import gelian from "../assets/gelian.png"
 
 const cards = [
@@ -31,7 +31,7 @@ const cards = [
         keyExtractor={(item) => item.id}
         vertical
         renderItem={({ item }) =>
-            <TouchableOpacity style={tw`p-6 m-3 pb-8 rounded-lg pt-4 bg-gray-200 w-100 h-60`}
+            <TouchableOpacity style={tw`p-6 m-3 pb-8 rounded-lg pt-4 bg-gray-200 w-80 h-60`}
               onPress={() => {}}>
                 <View>
                     <Image
