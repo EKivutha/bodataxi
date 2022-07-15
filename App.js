@@ -9,6 +9,9 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import EatsScreen from './screens/EatsScreen';
+import MenuScreen from './screens/MenuScreen';
+import { KeyboardAvoidingView } from 'react-native-web';
+import { Platform } from 'react-native';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -16,6 +19,11 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
+          <KeyboardAvoidingView
+          behavio4 r={Platform.OS ==="ios"? "padding":"height"}
+          style = {{flex: 1}}
+          keyboardVerticalOffset = {Platform.OS == 'ios' ? -64 : 0}
+          />
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"
@@ -34,6 +42,13 @@ export default function App() {
            <Stack.Screen
               name="EatsScreen"
               component= {EatsScreen}
+              options={{
+                headerShown: false,
+              }}
+           />
+           <Stack.Screen
+              name="MenuScreen"
+              component= {MenuScreen}
               options={{
                 headerShown: false,
               }}
