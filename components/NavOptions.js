@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import tw from 'tailwind-react-native-classnames';
+import tw from 'twrnc';
 import { Icon } from "react-native-elements";
 import boda from "../assets/boda.png"
 import food from "../assets/food.png"
@@ -30,7 +30,7 @@ const NavOptions = () => {
             renderItem={({ item }) =>
                 <TouchableOpacity style={tw`p-2 pl-6 pb-8 rounded-lg pt-4 bg-gray-200 m-2 w-40 h-60`}
                   onPress={() => navigation.navigate(item.screen)}>
-                    <View>
+                    <View style={tw`${!origin && "opacity-20"}`}>
                         <Image
                             style={{
                                 width: 120,
