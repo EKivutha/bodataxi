@@ -1,11 +1,12 @@
 import React from 'react'
 import { Icon } from "react-native-elements";
 import { FlatList,TouchableOpacity,Image,StyleSheet, Text, View } from 'react-native'
-import tw from 'tailwind-react-native-classnames';
+import tw from 'twrnc';
 import al from "../assets/al.png"
 import ttot from "../assets/ttotmacha.png"
 import gelian from "../assets/gelian.png"
-
+import MenuScreen from './MenuScreen';
+import {useNavigation} from '@react-navigation/core'
 const cards = [
     {
       id: "0",
@@ -25,14 +26,16 @@ const cards = [
   ]
 
  const EatsScreen = () => {
+  const navigation = useNavigation();
     return (
         <FlatList
         data={cards}
         keyExtractor={(item) => item.id}
         vertical
+        style ={tw`mt-15`}
         renderItem={({ item }) =>
-            <TouchableOpacity style={tw`p-6 m-3 pb-8 rounded-lg pt-4 bg-gray-200 w-80 h-60`}
-              onPress={() => {}}>
+            <TouchableOpacity style={tw`p-6 my-2 mx-8 pb-8 rounded-lg pt-4 bg-gray-200 w-80 h-60`}
+            onPress={() => navigation.navigate("MenuScreen")}>
                 <View>
                     <Image
                         style={{
