@@ -10,7 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import EatsScreen from './screens/EatsScreen';
 import MenuScreen from './screens/MenuScreen';
-import { KeyboardAvoidingView } from 'react-native-web';
+import { KeyboardAvoidingView } from 'react-native';
 import { Platform } from 'react-native';
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
       <NavigationContainer>
         <SafeAreaProvider>
           <KeyboardAvoidingView
-          behavio4 r={Platform.OS ==="ios"? "padding":"height"}
+          behavior={Platform.OS ==="ios"? "padding":"height"}
           style = {{flex: 1}}
           keyboardVerticalOffset = {Platform.OS == 'ios' ? -64 : 0}
           />
