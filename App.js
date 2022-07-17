@@ -18,12 +18,13 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
+        
         <SafeAreaProvider>
-          <KeyboardAvoidingView
+        {/* <KeyboardAvoidingView
           behavior={Platform.OS ==="ios"? "padding":"height"}
           style = {{flex: 1}}
           keyboardVerticalOffset = {Platform.OS == 'ios' ? -64 : 0}
-          />
+          /> */}
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"
@@ -57,7 +58,9 @@ export default function App() {
           {/* <HomeScreen />
           <StatusBar style="auto" /> */}
         </SafeAreaProvider>
+        
       </NavigationContainer>
+      
     </Provider>
 
   );
