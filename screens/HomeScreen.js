@@ -5,9 +5,9 @@ import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useDispatch } from "react-redux";
 import {setOrigin, setDestination} from '../slices/navSlice'
-require('dotenv').config()
+// import 'dotenv/config'
 
-google_api = process.env.GOOGLE_MAPS_API_KEY
+import {GOOGLE_MAPS_API_KEY} from '@env'
 
 export default HomeScreen = () => {
     const dispatch = useDispatch()
@@ -24,12 +24,12 @@ export default HomeScreen = () => {
                     source={require('../assets/boda1.png')}
                 />
             </View>
-            {/* <GooglePlacesAutocomplete
+            <GooglePlacesAutocomplete
                 placeholder='Where from'
                 styles={tw`flex text-sm`}
                 onPress={(data, details = null) => {
                     // 'details' is provided when fetchDetails = true
-                    // console.log(data, details);
+                    console.log(data, details);
                     dispatch(setOrigin(
                         {
                             location: details.geometry.location,
@@ -38,7 +38,7 @@ export default HomeScreen = () => {
                     ))
                 }}
                 query={{
-                    key: 'YOUR API KEY',
+                    key: `${GOOGLE_MAPS_API_KEY}`,
                     language: 'en',
                 }}
                 fetchDetails={true}
@@ -47,7 +47,7 @@ export default HomeScreen = () => {
 
                 nearbyPlacesAPI="GooglePlacesSearch"
                 debounce={400}
-            /> */}
+            />
             <NavOptions />
 
         </SafeAreaView>
