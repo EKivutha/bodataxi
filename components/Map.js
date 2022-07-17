@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import React, { useEffect, useRef } from 'react'
 import MapView, { Marker } from 'react-native-maps'
 import { useSelector } from 'react-redux'
@@ -6,6 +6,11 @@ import tw from 'twrnc';
 import { selectDestination, selectOrigin, setTravelTimeInformation } from '../slices/navSlice';
 var axios = require('axios');
 import { GOOGLE_MAPS_API_KEY } from '@env'
+
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 
 export default function Map() {
@@ -49,13 +54,14 @@ export default function Map() {
     <View styles={tw`flex-1 bg-white items-center`}>
       <MapView
         // style ={tw`flex`}
+        style={styles.map}
         ref={mapRef}
         mapType="mutedStandard"
         initialRegion={{
+          latitudeDelta: LATITUDE_DELTA,
           latitude: origin?.location.lat,
-          longitude: origin?.location.lang,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
+          longitude: origin?.location.lang,          
+          longitudeDelta: LONGITUDE_DELTA,
         }}
       >
         {origin?.location && (
@@ -87,3 +93,15 @@ export default function Map() {
     </View>
   )
 }
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  map: {
+      width: Dimensions.get('window').width,
+      height: Dimensions.get('window').height,
+  },
+});
